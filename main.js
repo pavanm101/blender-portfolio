@@ -1,6 +1,6 @@
 ﻿/* ============================================================
-   EDIT THIS BLOCK â€” your projects.
-   Images live in assets/img/. `size` is "wide", "half", or "full".
+   EDIT THIS BLOCK — your projects.
+   Images live in assets/img/. `size` is "half" or "full".
    ============================================================ */
 const PROJECTS = [
   {
@@ -21,7 +21,7 @@ const PROJECTS = [
     size: "half",
     image: "assets/img/red-room.jpg",
     tone: ["#2a1010", "#8c1c14"],
-    note: "A red form pushing through a doorway â€” high-contrast motion test.",
+    note: "A red form pushing through a doorway — high-contrast motion test.",
   },
   {
     title: "Cell X",
@@ -51,7 +51,7 @@ const PROJECTS = [
     size: "half",
     image: "assets/img/signal.jpg",
     tone: ["#3a2a30", "#8a5560"],
-    note: "Figure study â€” blown-out silhouette against a particle ring.",
+    note: "Figure study — blown-out silhouette against a particle ring.",
   },
   {
     title: "Globe Study",
@@ -71,7 +71,7 @@ const PROJECTS = [
     size: "full",
     image: "assets/img/porch-light.jpg",
     tone: ["#3b3f36", "#7d7a55"],
-    note: "Exterior study â€” porch, garden, late-afternoon haze.",
+    note: "Exterior study — porch, garden, late-afternoon haze.",
   },
 ];
 
@@ -102,7 +102,7 @@ function cardMarkup(project, indexInFilter) {
     ? `<span class="card__badge">${project.category}</span>`
     : `<span class="card__badge">Placeholder</span>`;
   const media = project.image
-    ? `<img src="${project.image}" alt="${project.title} â€” ${project.category} render" loading="lazy" />`
+    ? `<img src="${project.image}" alt="${project.title} — ${project.category} render" loading="lazy" />`
     : `<span class="card__grid" aria-hidden="true"></span>`;
 
   return `
@@ -118,7 +118,7 @@ function cardMarkup(project, indexInFilter) {
       <div class="card__meta">
         <span class="card__index">${pad(i + 1)}</span>
         <h3 class="card__title">${project.title}</h3>
-        <span class="card__tags">${project.category} Â· ${project.medium}</span>
+        <span class="card__tags">${project.category} · ${project.medium}</span>
       </div>
     </article>`;
 }
@@ -143,7 +143,7 @@ filterBtns.forEach((btn) =>
   btn.addEventListener("click", () => applyFilter(btn.dataset.filter))
 );
 
-/* â”€â”€ Lightbox â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Lightbox ───────────────────────────────────────────── */
 function paintStage(project) {
   if (project.image) {
     stage.innerHTML = `<img src="${project.image}" alt="${project.title}" />`;
@@ -156,7 +156,7 @@ function paintStage(project) {
       </div>`;
   }
   lbTitle.textContent = project.title;
-  lbTags.textContent = `${project.category} Â· ${project.medium} Â· ${project.tags.join(" Â· ")}`;
+  lbTags.textContent = `${project.category} · ${project.medium} · ${project.tags.join(" · ")}`;
   lbNote.textContent = project.note || "";
 }
 
@@ -188,7 +188,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") openAt(current - 1);
 });
 
-/* â”€â”€ Chrome: sticky header + reveals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Chrome: sticky header + reveals ────────────────────── */
 const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });

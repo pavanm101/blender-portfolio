@@ -80,7 +80,24 @@ Then in the repo: Settings → Pages → Source: `main` / root. Live at
 
 **Vercel** — `npx vercel` inside the folder, accept the defaults.
 
-Either way, add the link to your Fiverr profile and your LinkedIn.
+Either way, add the link to your Fiverr profile.
+
+## Export the PDF
+
+The page links to `assets/pavan-m-portfolio.pdf`. Rebuild it after you change the
+projects, copy, or layout:
+
+```powershell
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --disable-gpu `
+  --no-pdf-header-footer --user-data-dir="$env:TEMP\chrome-pdf" `
+  --print-to-pdf="C:\Workspace\portfolio\assets\pavan-m-portfolio.pdf" `
+  "file:///C:/Workspace/portfolio/index.html"
+```
+
+Chrome reuses a user-data directory if it still exists, so point `--user-data-dir`
+at a fresh folder (or delete it) if the PDF doesn't update. The print styles are
+section 10 at the bottom of `styles.css`: A4, light theme, two projects per row,
+no site chrome.
 
 ## Notes
 
