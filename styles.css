@@ -400,8 +400,6 @@ p { margin: 0; }
   animation: cardIn 0.65s var(--ease) both;
 }
 
-.card[data-size="wide"] { grid-column: span 7; }
-.card[data-size="half"] { grid-column: span 5; }
 .card[data-size="full"] { grid-column: span 12; }
 
 @keyframes cardIn {
@@ -433,11 +431,9 @@ p { margin: 0; }
   isolation: isolate;
 }
 
-.card[data-size="wide"] .card__media { aspect-ratio: 4 / 3; }
-.card[data-size="half"] .card__media { aspect-ratio: 20 / 21; }
-.card[data-size="full"] .card__media { aspect-ratio: 21 / 9; }
 .card[data-size="half"] .card__media,
-.card[data-size="wide"] .card__media { min-height: 220px; }
+.card[data-size="wide"] .card__media,
+.card[data-size="full"] .card__media { aspect-ratio: 16 / 9; }
 
 .card__media img {
   width: 100%;
@@ -764,6 +760,14 @@ p { margin: 0; }
   margin-top: 0.2rem;
   font-size: 0.78rem;
   color: var(--bone-faint);
+}
+
+.lightbox__note {
+  max-width: 48ch;
+  margin-top: 0.55rem;
+  font-size: 0.86rem;
+  color: var(--bone-dim);
+  text-wrap: pretty;
 }
 
 .lightbox__nav { display: flex; gap: 0.5rem; }

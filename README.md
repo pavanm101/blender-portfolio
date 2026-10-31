@@ -30,13 +30,14 @@ Open `main.js`. The first ~60 lines are the only part you need to touch.
 
 ```js
 {
-  title: "Kettle Study",
-  category: "Product",        // Product | Character | Environment | Motion
-  year: "2026",
-  tags: ["Hard-surface", "Cycles", "PBR"],
-  size: "wide",               // wide | half | full
-  image: "",                  // ← put your file path here
-  tone: ["#2b303c", "#5c4033"],
+  title: "Zero-G Drift",
+  category: "Character",      // Product | Character | Environment | Motion
+  medium: "Cycles",           // shown next to the category
+  tags: ["Character", "Environment", "Compositing"],
+  size: "half",               // half | full
+  image: "assets/img/zero-g.jpg",
+  tone: ["#2a2350", "#7a2f4a"],
+  note: "One line shown in the viewer.",
 }
 ```
 
@@ -46,9 +47,11 @@ To add an image:
 2. Set `image: "assets/img/kettle.jpg"`
 3. Keep images under ~2000px on the long edge and save as JPG or WebP. Export at quality 80–85; a portfolio doesn't need 8MB PNGs.
 
+All cards are 16:9 so your renders are shown whole, never cropped. `size: "full"` makes one card span the whole row — useful for a closing piece.
+
 When `image` is empty, the card shows a generated viewport-style placeholder with a small **PLACEHOLDER** tag. Set an image and the tag disappears automatically.
 
-**Before you publish:** rename all six projects, change the years and tags, and replace the placeholder copy in `index.html` (hero, about, services). The current text is written to be plausible, not true.
+**Before you publish:** check the project titles and tags against what the pieces actually are, and rewrite the copy in `index.html` (hero, about, services) in your own words.
 
 ## Change the look
 

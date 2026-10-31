@@ -1,64 +1,77 @@
-/* ============================================================
-   EDIT THIS BLOCK — your six projects.
-   Leave `image: ""` to keep the generated placeholder.
-   When you have a render, drop it in assets/img/ and set:
-     image: "assets/img/kettle.jpg"
-   `size` must be "wide", "half", or "full".
+﻿/* ============================================================
+   EDIT THIS BLOCK â€” your projects.
+   Images live in assets/img/. `size` is "wide", "half", or "full".
    ============================================================ */
 const PROJECTS = [
   {
-    title: "Kettle Study",
-    category: "Product",
-    year: "2026",
-    tags: ["Hard-surface", "Cycles", "PBR"],
-    size: "wide",
-    image: "",
-    tone: ["#2b303c", "#5c4033"],
-  },
-  {
-    title: "Low-Poly Ranger",
+    title: "Zero-G Drift",
     category: "Character",
-    year: "2025",
-    tags: ["Stylised", "Rigged", "EEVEE"],
+    medium: "Cycles",
+    tags: ["Character", "Environment", "Compositing"],
     size: "half",
-    image: "",
-    tone: ["#3b2a2a", "#6b4a2d"],
+    image: "assets/img/zero-g.jpg",
+    tone: ["#2a2350", "#7a2f4a"],
+    note: "Character in zero gravity, lit against a nebula backdrop.",
   },
   {
-    title: "Atrium",
-    category: "Environment",
-    year: "2026",
-    tags: ["Archviz", "Lighting", "Cycles"],
-    size: "half",
-    image: "",
-    tone: ["#243036", "#2f4a44"],
-  },
-  {
-    title: "Component Breakdown",
-    category: "Product",
-    year: "2025",
-    tags: ["CAD", "Exploded view", "Studio"],
-    size: "wide",
-    image: "",
-    tone: ["#2a2a33", "#4a3a52"],
-  },
-  {
-    title: "Desk Still Life",
-    category: "Product",
-    year: "2025",
-    tags: ["Set dressing", "Materials"],
-    size: "wide",
-    image: "",
-    tone: ["#2f2b25", "#5a4632"],
-  },
-  {
-    title: "Loop Test",
+    title: "Red Room",
     category: "Motion",
-    year: "2026",
-    tags: ["Turntable", "Animation", "Edit"],
+    medium: "Simulation",
+    tags: ["Motion", "Simulation", "Grade"],
     size: "half",
-    image: "",
-    tone: ["#252c33", "#3d4a5c"],
+    image: "assets/img/red-room.jpg",
+    tone: ["#2a1010", "#8c1c14"],
+    note: "A red form pushing through a doorway â€” high-contrast motion test.",
+  },
+  {
+    title: "Cell X",
+    category: "Product",
+    medium: "EEVEE",
+    tags: ["Product", "Emissive", "Lighting"],
+    size: "half",
+    image: "assets/img/cell-x.jpg",
+    tone: ["#2c1030", "#6a1f5a"],
+    note: "Emissive cube on a stepped plinth, lit with a hard magenta key.",
+  },
+  {
+    title: "Framed",
+    category: "Character",
+    medium: "4K",
+    tags: ["Character", "Portrait", "Lighting"],
+    size: "half",
+    image: "assets/img/framed.jpg",
+    tone: ["#1d2b3a", "#2f6a63"],
+    note: "Portrait showcase inside a portal frame, rendered at 4K.",
+  },
+  {
+    title: "Signal",
+    category: "Motion",
+    medium: "Experimental",
+    tags: ["Motion", "Volumetrics", "Experimental"],
+    size: "half",
+    image: "assets/img/signal.jpg",
+    tone: ["#3a2a30", "#8a5560"],
+    note: "Figure study â€” blown-out silhouette against a particle ring.",
+  },
+  {
+    title: "Globe Study",
+    category: "Product",
+    medium: "Stills",
+    tags: ["Product", "Materials", "Depth of field"],
+    size: "half",
+    image: "assets/img/desk-globe.jpg",
+    tone: ["#3a2f24", "#2f6b6b"],
+    note: "Desk globe, shallow depth of field, warm interior bokeh.",
+  },
+  {
+    title: "Porch Light",
+    category: "Environment",
+    medium: "Archviz",
+    tags: ["Environment", "Archviz", "Lighting"],
+    size: "full",
+    image: "assets/img/porch-light.jpg",
+    tone: ["#3b3f36", "#7d7a55"],
+    note: "Exterior study â€” porch, garden, late-afternoon haze.",
   },
 ];
 
@@ -75,6 +88,7 @@ const lightbox = document.querySelector("[data-lightbox]");
 const stage = document.querySelector("[data-stage]");
 const lbTitle = document.querySelector("[data-lb-title]");
 const lbTags = document.querySelector("[data-lb-tags]");
+const lbNote = document.querySelector("[data-lb-note]");
 
 const pad = (n) => String(n).padStart(2, "0");
 let activeFilter = "all";
@@ -88,7 +102,7 @@ function cardMarkup(project, indexInFilter) {
     ? `<span class="card__badge">${project.category}</span>`
     : `<span class="card__badge">Placeholder</span>`;
   const media = project.image
-    ? `<img src="${project.image}" alt="${project.title} — ${project.category} render" loading="lazy" />`
+    ? `<img src="${project.image}" alt="${project.title} â€” ${project.category} render" loading="lazy" />`
     : `<span class="card__grid" aria-hidden="true"></span>`;
 
   return `
@@ -104,7 +118,7 @@ function cardMarkup(project, indexInFilter) {
       <div class="card__meta">
         <span class="card__index">${pad(i + 1)}</span>
         <h3 class="card__title">${project.title}</h3>
-        <span class="card__tags">${project.category} · ${project.year}</span>
+        <span class="card__tags">${project.category} Â· ${project.medium}</span>
       </div>
     </article>`;
 }
@@ -129,7 +143,7 @@ filterBtns.forEach((btn) =>
   btn.addEventListener("click", () => applyFilter(btn.dataset.filter))
 );
 
-/* ── Lightbox ───────────────────────────────────────────── */
+/* â”€â”€ Lightbox â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function paintStage(project) {
   if (project.image) {
     stage.innerHTML = `<img src="${project.image}" alt="${project.title}" />`;
@@ -142,7 +156,8 @@ function paintStage(project) {
       </div>`;
   }
   lbTitle.textContent = project.title;
-  lbTags.textContent = `${project.category} · ${project.year} · ${project.tags.join(" · ")}`;
+  lbTags.textContent = `${project.category} Â· ${project.medium} Â· ${project.tags.join(" Â· ")}`;
+  lbNote.textContent = project.note || "";
 }
 
 function openAt(n) {
@@ -173,7 +188,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") openAt(current - 1);
 });
 
-/* ── Chrome: sticky header + reveals ────────────────────── */
+/* â”€â”€ Chrome: sticky header + reveals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });
